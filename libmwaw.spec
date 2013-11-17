@@ -5,22 +5,24 @@
 Summary:	Library for reading and converting ClarisWorks, MacWrite, WriteNow word processor documents
 Summary(pl.UTF-8):	Biblioteka do odczytu i konwersji dokumentów tekstowych ClarisWorks, MacWrite i WriteNow
 Name:		libmwaw
-Version:	0.1.10
+Version:	0.2.0
 Release:	1
 License:	MPL v2.0 or LGPL v2+
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/libmwaw/%{name}-%{version}.tar.xz
-# Source0-md5:	c20cd780cf0e2cfc31c6c9483fa85762
+# Source0-md5:	bcec7fb6cda6d6d233f305d98acfc0cf
 URL:		http://sourceforge.net/projects/libmwaw
 BuildRequires:	boost-devel
 BuildRequires:	doxygen
 BuildRequires:	libstdc++-devel
 BuildRequires:	libwpd-devel >= 0.9.5
+BuildRequires:	libwpg-devel >= 0.2.2
 BuildRequires:	pkgconfig >= 1:0.20
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	zlib-devel
 Requires:	libwpd >= 0.9.5
+Requires:	libwpg >= 0.2.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -115,19 +117,19 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc CHANGES CREDITS README
-%attr(755,root,root) %{_libdir}/libmwaw-0.1.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libmwaw-0.1.so.1
+%attr(755,root,root) %{_libdir}/libmwaw-0.2.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libmwaw-0.2.so.2
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libmwaw-0.1.so
-%{_includedir}/libmwaw-0.1
-%{_pkgconfigdir}/libmwaw-0.1.pc
+%attr(755,root,root) %{_libdir}/libmwaw-0.2.so
+%{_includedir}/libmwaw-0.2
+%{_pkgconfigdir}/libmwaw-0.2.pc
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libmwaw-0.1.a
+%{_libdir}/libmwaw-0.2.a
 %endif
 
 %files apidocs
@@ -136,6 +138,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files tools
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/mwaw2csv
 %attr(755,root,root) %{_bindir}/mwaw2html
 %attr(755,root,root) %{_bindir}/mwaw2raw
 %attr(755,root,root) %{_bindir}/mwaw2text
