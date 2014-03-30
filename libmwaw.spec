@@ -1,12 +1,12 @@
 #
 # Conditional build:
 %bcond_without	static_libs	# static library
-#
+
 Summary:	Library for reading and converting ClarisWorks, MacWrite, WriteNow word processor documents
 Summary(pl.UTF-8):	Biblioteka do odczytu i konwersji dokumentów tekstowych ClarisWorks, MacWrite i WriteNow
 Name:		libmwaw
 Version:	0.2.0
-Release:	1
+Release:	2
 License:	MPL v2.0 or LGPL v2+
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/libmwaw/%{name}-%{version}.tar.xz
@@ -63,6 +63,9 @@ Statyczna biblioteka libmwaw.
 Summary:	libmwaw API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki libmwaw
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 API and internal documentation for libmwaw library.
