@@ -5,24 +5,21 @@
 Summary:	Library for reading and converting ClarisWorks, MacWrite, WriteNow word processor documents
 Summary(pl.UTF-8):	Biblioteka do odczytu i konwersji dokumentów tekstowych ClarisWorks, MacWrite i WriteNow
 Name:		libmwaw
-Version:	0.2.1
+Version:	0.3.1
 Release:	1
 License:	MPL v2.0 or LGPL v2+
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/libmwaw/%{name}-%{version}.tar.xz
-# Source0-md5:	9f60734bf42b74131ada487d732b8a9e
+# Source0-md5:	0f5d08a835145c599c900b7b6cef1e3b
 URL:		http://sourceforge.net/projects/libmwaw
 BuildRequires:	boost-devel
 BuildRequires:	doxygen
+BuildRequires:	librevenge-devel >= 0.0
 BuildRequires:	libstdc++-devel
-BuildRequires:	libwpd-devel >= 0.9.5
-BuildRequires:	libwpg-devel >= 0.2.2
 BuildRequires:	pkgconfig >= 1:0.20
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	zlib-devel
-Requires:	libwpd >= 0.9.5
-Requires:	libwpg >= 0.2.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -38,8 +35,8 @@ Summary:	Header files for libmwaw
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libmwaw
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	librevenge-devel >= 0.0
 Requires:	libstdc++-devel
-Requires:	libwpd-devel >= 0.9.5
 
 %description devel
 Header files for libmwaw.
@@ -97,8 +94,8 @@ ClarisWorks, MacWrite i WriteNow do innych formatów.
 %build
 %configure \
 	--disable-silent-rules \
-	%{?with_static_libs:--enable-static} \
-	--disable-werror
+	%{?with_static_libs:--enable-static}
+#	--with-sharedptr=c++11	not ready for - uses implicit bool cast
 
 %{__make}
 
@@ -120,30 +117,31 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc CHANGES CREDITS README
-%attr(755,root,root) %{_libdir}/libmwaw-0.2.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libmwaw-0.2.so.2
+%attr(755,root,root) %{_libdir}/libmwaw-0.3.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libmwaw-0.3.so.3
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libmwaw-0.2.so
-%{_includedir}/libmwaw-0.2
-%{_pkgconfigdir}/libmwaw-0.2.pc
+%attr(755,root,root) %{_libdir}/libmwaw-0.3.so
+%{_includedir}/libmwaw-0.3
+%{_pkgconfigdir}/libmwaw-0.3.pc
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libmwaw-0.2.a
+%{_libdir}/libmwaw-0.3.a
 %endif
 
 %files apidocs
 %defattr(644,root,root,755)
-%doc %{_docdir}/%{name}
+%{_docdir}/%{name}
 
 %files tools
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/mwaw2csv
 %attr(755,root,root) %{_bindir}/mwaw2html
 %attr(755,root,root) %{_bindir}/mwaw2raw
+%attr(755,root,root) %{_bindir}/mwaw2svg
 %attr(755,root,root) %{_bindir}/mwaw2text
 %attr(755,root,root) %{_bindir}/mwawFile
 %attr(755,root,root) %{_bindir}/mwawZip
