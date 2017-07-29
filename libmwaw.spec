@@ -5,12 +5,12 @@
 Summary:	Library for reading and converting ClarisWorks, MacWrite, WriteNow word processor documents
 Summary(pl.UTF-8):	Biblioteka do odczytu i konwersji dokumentów tekstowych ClarisWorks, MacWrite i WriteNow
 Name:		libmwaw
-Version:	0.3.11
+Version:	0.3.12
 Release:	1
 License:	MPL v2.0 or LGPL v2+
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/libmwaw/%{name}-%{version}.tar.xz
-# Source0-md5:	c3ba5d271074c49a9676144b0b97fc55
+# Source0-md5:	feba044fe0bfd37fa421acbc7debd59a
 URL:		http://sourceforge.net/projects/libmwaw
 BuildRequires:	doxygen
 BuildRequires:	librevenge-devel >= 0.0
