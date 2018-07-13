@@ -11,7 +11,7 @@ License:	MPL v2.0 or LGPL v2+
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/libmwaw/%{name}-%{version}.tar.xz
 # Source0-md5:	df03f34343c0ebd5d7e96bef5de0345b
-URL:		http://sourceforge.net/projects/libmwaw
+URL:		https://sourceforge.net/projects/libmwaw/
 BuildRequires:	doxygen
 BuildRequires:	librevenge-devel >= 0.0
 BuildRequires:	libstdc++-devel >= 6:4.7
@@ -93,8 +93,7 @@ ClarisWorks, MacWrite i WriteNow do innych formatów.
 %build
 %configure \
 	--disable-silent-rules \
-	%{?with_static_libs:--enable-static} \
-	--with-sharedptr=c++11
+	%{?with_static_libs:--enable-static}
 
 %{__make}
 
