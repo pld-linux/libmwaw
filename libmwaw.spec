@@ -16,6 +16,7 @@ BuildRequires:	doxygen
 BuildRequires:	librevenge-devel >= 0.0
 BuildRequires:	libstdc++-devel >= 6:4.7
 BuildRequires:	pkgconfig >= 1:0.20
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	zlib-devel
